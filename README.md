@@ -43,14 +43,17 @@ m darf nur auf folgende Methoden zugreifen.
 
 # Code Smells
 
-| Code Smell | verletztes Prinzip | Bemerkung |
+| Code Smell | verletztes Prinzip | Erklärung |
 | -----------|--------------------|------------|
 | Long Methode       |SRP         | lange Methoden deuten darauf hin, dass die Methode mehrere Aufgeben hat|
 | Mystery Names      |            | <ul> <li>benutze erklärende Namen <li> keine Lügen </ul>
 | Kommentare         |            | <ul> <li> erkläre warum etwas passiert <li> wenn erklärt werden muss was passiert, ist der code schlecht verständlich|
-| Long Parameterlist |SRP         | hat eine Methode viele Parameter kann es sein, dass sie mehrere Aufgeben hat.|
+| Long Parameterlist |SRP         | hat eine Methode viele Parameter kann es sein, dass sie mehrere Aufgaben hat.|
 | Duplicate Code     |DRY         |   |
 | Refused Bequest    |ISP <br> LSP| Unterklassen welche Methoden der Oberklassen nicht implementieren.|
+| Large Class        | SRP        | ähnlich wie long Methode |
+| Primitive Obsession|            | Man sollte unspezifische Datentypen (wie int, Stringe, etc.) vermeiden und eigene specifische Datentypen nutzen. |
+|Data Clumps         |            | Werden verschiedene Datentypen oft zusammen genutzt, sollte man sie zu einem neuen Typ zusammenfügen. |
 
 
 # Polymorphismen
