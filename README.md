@@ -6,13 +6,22 @@
 | SLAP               | Single Layer of Abstraction Prinzip : <ul> Anweisungen innerhalb einer Methode sollten denselben Detailgrad haben. </ul>|
 | DRY                | Don´t repeat yourself               : <ul> Informationen und Logik sollte im Code nur einmal implementiert sein. </ul>|
 |Fachliche Zerlegung | Teile Code so auf, dass Komponenten nur für wenige (am besten eine) Personengruppe geändert werden muss.|
-|||
 | IHP                | Information Hiding Prinzip          : <ul> Komponenten sollten ihre Implementierung verstecken und nur über Schnittstellen kommunizieren. </ul>|
 | LCHC               | Low Coupling, High Cohesion         : <ul> <li> Hohe Kopplung verstößt oft gegen IHP.  <li> Niedrige Kohäsion verstöß oft gegen SRP. </ul> |
 | Law of Demeter     | Objekte sollten nur mit Objekten in ihrer unmittelbaren Umgebung kommunizieren (s.u.).|
-|||
 | ISP                | Interface Segregation Prinzip : <ul> Interfaces sollten so klein wie möglich und so groß wie nötig sein. </ul>|
+| DIP                |Dependency Inversion Principle : <ul> <li> High-level Komponenten sollten nicht von low-level Komponenten abhängen. </li> <li> Interfaces sollten nicht von Implementierungen abhängen. </li> </ul>>|
+| OCP                | Open-Closed Prinzip : <ul> <li> Offen für Erweiterung </li> <li> Geschlossen für Modifikation </li> </ul>|
+| LSP                | Liskov’sche Substitutionsprinzip : <ul> Instanzen einer Klasse können durch Instanzen einer Unterklasse ersetzt werden. </ul> |
 
+## SOLID
+
+Die SOLID-Prinzipien sind :
+- **S**RP
+- **O**CP
+- **L**SP
+- **I**SP
+- **D**IP
 
 ## Law of Demeter
 
@@ -41,7 +50,7 @@ m darf nur auf folgende Methoden zugreifen.
 | Kommentare         |            | <ul> <li> erkläre warum etwas passiert <li> wenn erklärt werden muss was passiert, ist der code schlecht verständlich|
 | Long Parameterlist |SRP         | hat eine Methode viele Parameter kann es sein, dass sie mehrere Aufgeben hat.|
 | Duplicate Code     |DRY         |   |
-|||
+| Refused Bequest    |ISP <br> LSP| Unterklassen welche Methoden der Oberklassen nicht implementieren.|
 
 
 # Polymorphismen
@@ -83,4 +92,5 @@ m darf nur auf folgende Methoden zugreifen.
 
 # Dependency In...
 
-Siehe Woche 07 im Video relativ am Ende.
+Siehe Woche 07 im Video relativ am Ende.  
+DiP sollte ich oben auch nochmal anpassen.
