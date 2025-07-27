@@ -7,12 +7,18 @@
 | DRY                | Don´t repeat yourself               : <ul> Informationen und Logik sollte im Code nur einmal implementiert sein. </ul>|
 |Fachliche Zerlegung | Teile Code so auf, dass Komponenten nur für wenige (am besten eine) Personengruppe geändert werden muss.|
 | IHP                | Information Hiding Prinzip          : <ul> Komponenten sollten ihre Implementierung verstecken und nur über Schnittstellen kommunizieren. </ul>|
+| Tell, don´t ask    | Wenn eine Komponente B etwas von einer Komponente A wissen, sollte A einen Getter haben. |
 | LCHC               | Low Coupling, High Cohesion         : <ul> <li> Hohe Kopplung verstößt oft gegen IHP.  <li> Niedrige Kohäsion verstöß oft gegen SRP. </ul> |
 | Law of Demeter     | Objekte sollten nur mit Objekten in ihrer unmittelbaren Umgebung kommunizieren (s.u.).|
 | ISP                | Interface Segregation Prinzip : <ul> Interfaces sollten so klein wie möglich und so groß wie nötig sein. </ul>|
-| DIP                |Dependency Inversion Principle : <ul> <li> High-level Komponenten sollten nicht von low-level Komponenten abhängen. </li> <li> Interfaces sollten nicht von Implementierungen abhängen. </li> </ul>>|
+| DIP                | Dependency Inversion Principle : <ul> <li> High-level Komponenten sollten nicht von low-level Komponenten abhängen. </li> <li> Interfaces sollten nicht von Implementierungen abhängen. </li> </ul>|
 | OCP                | Open-Closed Prinzip : <ul> <li> Offen für Erweiterung </li> <li> Geschlossen für Modifikation </li> </ul>|
 | LSP                | Liskov’sche Substitutionsprinzip : <ul> Instanzen einer Klasse können durch Instanzen einer Unterklasse ersetzt werden. </ul> |
+
+## FIRST
+
+das FIRST Prinzip ist ein Prinzip fürs Testing
+<ul><li>Fast<li>Independent<li>Repeatable<li>Self-validating<li>Timely</ul>
 
 ## SOLID
 
@@ -44,17 +50,45 @@ m darf nur auf folgende Methoden zugreifen.
 # Code Smells
 
 | Code Smell | verletztes Prinzip | Erklärung |
-| -----------|--------------------|------------|
+| -----------|--------------------|-----------|
 | Long Methode       |SRP         | lange Methoden deuten darauf hin, dass die Methode mehrere Aufgeben hat|
-| Mystery Names      |            | <ul> <li>benutze erklärende Namen <li> keine Lügen </ul>
+| Mystery Names      |            | <ul> <li>benutze erklärende Namen <li> keine Lügen </ul>|
 | Kommentare         |            | <ul> <li> erkläre warum etwas passiert <li> wenn erklärt werden muss was passiert, ist der code schlecht verständlich|
 | Long Parameterlist |SRP         | hat eine Methode viele Parameter kann es sein, dass sie mehrere Aufgaben hat.|
 | Duplicate Code     |DRY         |   |
 | Refused Bequest    |ISP <br> LSP| Unterklassen welche Methoden der Oberklassen nicht implementieren.|
 | Large Class        | SRP        | ähnlich wie long Methode |
 | Primitive Obsession|            | Man sollte unspezifische Datentypen (wie int, Stringe, etc.) vermeiden und eigene specifische Datentypen nutzen. |
-|Data Clumps         |            | Werden verschiedene Datentypen oft zusammen genutzt, sollte man sie zu einem neuen Typ zusammenfügen. |
+| Data Clumps        |            | Werden verschiedene Datentypen oft zusammen genutzt, sollte man sie zu einem neuen Typ zusammenfügen. |
+| Divergent Change   |SRP <br>LCHC| Wenn eine Komponente aus verschiedenen Gründen geändert werden muss. |
+| Shotgun Surgery    |LCHC        | Wenn mehrere Komponenten geändert werden müssen wenn wir ein Feature ändern. |
+| Feature Envy       |LCHC<br>Tell, don´t ask| Wenn eine Komponente oft auf eine andere zugreift. |
+| Message Chains     |Law of Demeter| Wenn gegen das Law of Demeter verstoßen wird. Z.B.: Warenkorb.getProdukt().getPreis()|
 
+## Weitere nicht erwähnte Codesmells:
+
+| Code Smell | verletztes Prinzip | Erklärung |
+| -----------|--------------------|-----------|
+| Dead Code          |            | Nicht mehr genutzter oder erreichbarer Code, der entfernt werden sollte. |
+| God Object         | SRP        | Eine Klasse, die zu viele Verantwortlichkeiten übernimmt und dadurch sehr groß und unübersichtlich wird. |
+| Speculative Generality |        | Code, der für zukünftige Anforderungen geschrieben wurde, die (noch) nicht benötigt werden. |
+| Lazy Class         |            | Eine Klasse, die zu wenig Funktionalität hat und eigentlich überflüssig ist. |
+| Temporary Field    |            | Felder, die nur unter bestimmten Bedingungen genutzt werden und sonst leer bleiben. |
+| Middle Man         |            | Eine Klasse, die fast alle Aufrufe nur an andere Objekte weiterleitet und selbst kaum Logik enthält. |
+
+# Refactoring-Techniken
+
+| Technik                | Behebt Code Smell | Erklärung |
+|------------------------|------------------|-----------|
+| Extract Method         | Long Method<br>Duplicate Code | Teile einen langen Codeabschnitt in eine eigene Methode aus, um Übersichtlichkeit und Wiederverwendbarkeit zu erhöhen. |
+| Rename                 | Mystery Names | Benenne Variablen, Methoden oder Klassen um, damit sie aussagekräftiger sind. |
+| Move                   | Feature Envy<br>Large Class<br>Middle Man | Verschiebe Methoden oder Felder in eine passendere Klasse. |
+| Inline                 | Lazy Class<br>Temporary Field | Ersetze eine Methode oder Variable durch ihren Inhalt, wenn sie nur einmal verwendet wird. |
+| Extract Class          | Large Class<br>God Object<br>Divergent Change | Teile eine große Klasse in mehrere kleinere Klassen mit klaren Verantwortlichkeiten auf. |
+| Replace Temp with Query| Temporary Field | Ersetze temporäre Variablen durch Methodenaufrufe, um Klarheit zu schaffen. |
+| Encapsulate Field      | Data Clumps<br>Primitive Obsession | Mache Felder privat und stelle Getter/Setter bereit, um Kapselung zu verbessern. |
+| Introduce Parameter Object | Data Clumps<br>Long Parameter List | Fasse mehrere zusammengehörige Parameter zu einem eigenen Objekt zusammen. |
+| Remove Dead Code       | Dead Code | Entferne nicht mehr verwendeten oder erreichbaren Code. |
 
 # Polymorphismen
 
@@ -93,7 +127,9 @@ m darf nur auf folgende Methoden zugreifen.
     </li>
 </ul>
 
-# Dependency In...
+# Dependency Injection
 
-Siehe Woche 07 im Video relativ am Ende.  
-DiP sollte ich oben auch nochmal anpassen.
+Dependency Injection ist ein Entwurfsmuster, bei dem Abhängigkeiten (z.B. Objekte, die eine Klasse benötigt) von außen übergeben werden, anstatt sie selbst zu erzeugen. <br>
+Dadurch können wir bein Testen FakeObjekte übergeben. 
+
+Beispiel: Ein Service bekommt eine Datenbank-Verbindung als Parameter im Konstruktor übergeben, statt sie selbst zu erzeugen.
