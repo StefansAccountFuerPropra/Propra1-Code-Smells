@@ -127,17 +127,18 @@ m darf nur auf folgende Methoden zugreifen.
     </li>
 </ul>
 
-# Kopplung
+## Kopplungsarten
 
-Komponente A ist durch Änderung x an Komponente B gekoppelt, wenn man durch Änderung x an B auch A ändern muss.<br>
-A kann auf folgende Arten an B gekoppelt sein :
-
-| Kopplungs Art  | Erklärung |
-|----------------|-----------|
-|Kopplung im Code| Methode A ruft Methode B auf. |
-|Kopplung durch Daten| B erzeugt Daten und übergibt diese Daten an A. |
-|Unsichtbare Kommplung| Beispiel: A und B teilen sich Speicher. |
-|Kopplung durch Vererbung|  |
+| Kopplungsart         | Erklärung |
+|----------------------|-----------|
+| Datenkopplung        | Zwei Komponenten tauschen nur Daten (z.B. primitive Werte, Objekte) aus. |
+| Kontrollkopplung     | Eine Komponente steuert das Verhalten einer anderen durch Kontrollinformationen (z.B. Flags). |
+| Stempelkupplung      | Komponenten teilen sich eine Datenstruktur, nutzen aber nur einen Teil davon. |
+| Externe Kopplung     | Komponenten sind über externe Systeme (z.B. Datenbanken, Dateien) verbunden. |
+| Inhaltliche Kopplung | Eine Komponente greift direkt auf die Daten einer anderen zu (z.B. auf deren Felder) – stärkste Form der Kopplung. |
+| Aufrufkopplung       | Eine Komponente ruft Methoden einer anderen direkt auf. |
+| Vererbungskopplung   | Kopplung durch Vererbungsbeziehungen zwischen Klassen. |
+| Testkopplung         | Testcode ist zu stark an die Implementierung des Produktivcodes gebunden, z.B. durch direkte Nutzung privater Felder, zu spezifische Assertions oder häufige Änderungen der Tests bei Refactorings. |
 
 # Dependency Injection
 
