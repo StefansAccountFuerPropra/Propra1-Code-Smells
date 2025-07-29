@@ -65,7 +65,7 @@ m darf nur auf folgende Methoden zugreifen.
 | Feature Envy       |LCHC<br>Tell, don´t ask| Wenn eine Komponente oft auf eine andere zugreift. |
 | Message Chains     |Law of Demeter| Wenn gegen das Law of Demeter verstoßen wird. Z.B.: Warenkorb.getProdukt().getPreis()|
 
-## Weitere nicht erwähnte Codesmells:
+### Weitere nicht erwähnte Codesmells:
 
 | Code Smell | verletztes Prinzip | Erklärung |
 | -----------|--------------------|-----------|
@@ -126,6 +126,18 @@ m darf nur auf folgende Methoden zugreifen.
         </ul>
     </li>
 </ul>
+
+# Kopplung
+
+Komponente A ist durch Änderung x an Komponente B gekoppelt, wenn man durch Änderung x an B auch A ändern muss.<br>
+A kann auf folgende Arten an B gekoppelt sein :
+
+| Kopplungs Art  | Erklärung |
+|----------------|-----------|
+|Kopplung im Code| Methode A ruft Methode B auf. |
+|Kopplung durch Daten| B erzeugt Daten und übergibt diese Daten an A. |
+|Unsichtbare Kommplung| Beispiel: A und B teilen sich Speicher. |
+|Kopplung durch Vererbung|  |
 
 # Dependency Injection
 
