@@ -57,9 +57,9 @@ m darf nur auf folgende Methoden zugreifen.
 | Long Parameterlist |SRP         | hat eine Methode viele Parameter kann es sein, dass sie mehrere Aufgaben hat.|
 | Duplicate Code     |DRY         |   |
 | Refused Bequest    |ISP <br> LSP| Unterklassen welche Methoden der Oberklassen nicht implementieren.|
-| Large Class        | SRP        | ähnlich wie long Methode |
-| Primitive Obsession|            | Man sollte unspezifische Datentypen (wie int, Stringe, etc.) vermeiden und eigene specifische Datentypen nutzen. |
-| Data Clumps        |            | Werden verschiedene Datentypen oft zusammen genutzt, sollte man sie zu einem neuen Typ zusammenfügen. |
+| Large Class        |SRP         | ähnlich wie long Methode |
+| Primitive Obsession|IHP <br> DRY| Man sollte unspezifische Datentypen (wie int, Stringe, etc.) vermeiden und eigene specifische Datentypen nutzen. |
+| Data Clumps        |IHP <br> DRY| Werden verschiedene Datentypen oft zusammen genutzt, sollte man sie zu einem neuen Typ zusammenfügen. |
 | Divergent Change   |SRP <br>LCHC| Wenn eine Komponente aus verschiedenen Gründen geändert werden muss. |
 | Shotgun Surgery    |LCHC        | Wenn mehrere Komponenten geändert werden müssen wenn wir ein Feature ändern. |
 | Feature Envy       |LCHC<br>Tell, don´t ask| Wenn eine Komponente oft auf eine andere zugreift. |
@@ -128,6 +128,8 @@ m darf nur auf folgende Methoden zugreifen.
 </ul>
 
 ## Kopplungsarten
+
+
 
 | Kopplungsart         | Erklärung |
 |----------------------|-----------|
